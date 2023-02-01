@@ -1,6 +1,6 @@
 <head>
   <meta charset="UTF-8">
-  <title>Potluck Party</title>
+  <title>Tech Blog</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -9,10 +9,13 @@
   <div class="flex-column justify-space-around">
     <header class="flex-column">
     <nav class="display-flex justify-space-between align-center p-2">
-     <a href="">HOME</a>
+     <a href="/">HOME</a>
      <a href="">DASHBOARD</a>
-     <a href="">LOGIN</a>
-     <a href="">LOGOUT</a>
+     {{#if loggedIn}}
+    <button id="logout" class="btn-no-style">LOGOUT</button>
+     {{else}}
+     <a href="/login">LOGIN</a>
+     {{/if}}
      </nav>
      <h1 class="p2">
       Tech Blog
@@ -22,6 +25,9 @@
         {{{ body }}}
       </main>
   </div>
+    {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
   </body>
 
 </html>
