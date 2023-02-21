@@ -2,20 +2,6 @@ const router = require("express").Router();
 const { Post, Comment, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// Make a blog post to home page
-router.post("/", async (req, res) => {
-  try {
-    const postData = await Post.create({
-      title: req.body.title,
-      body: req.body.body,
-      user_id: req.session.user_id,
-    });
-    res.status(200).json(postData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
-
 // Post Comment on individual post page
 router.post("/:id", async (req, res) => {
   try {
