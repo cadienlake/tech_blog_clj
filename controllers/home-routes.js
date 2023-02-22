@@ -43,7 +43,6 @@ router.get("/dashboard", withAuth, async (req, res) => {
 router.get("/post/:id", withAuth, async (req, res) => {
   // Retrieve posts by their primary key, and display with the user who made post
   try {
-    const id = req.params.id;
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
@@ -56,6 +55,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
     if (postData.user_id === req.session.user_id) {
       postedBy = true;
     }
+    console.log(postedBy);
     const post = postData.get({ plain: true });
     // Retrieve comments that are linked to the post's id and display with User
     const commentData = await Comment.findAll({
