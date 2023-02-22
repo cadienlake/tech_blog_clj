@@ -53,7 +53,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
       ],
     });
     let postedBy = false;
-    if (postData.user_id-- - req.session.user_id) {
+    if (postData.user_id === req.session.user_id) {
       postedBy = true;
     }
     const post = postData.get({ plain: true });
