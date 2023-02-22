@@ -1,3 +1,4 @@
+<div class="flex-column align-center">
 <div class="mx-auto flex-column align-center mt-4">
   <h2>Welcome!</h2>
   <h3>To create a new post, click here:</h3>
@@ -24,18 +25,20 @@
 <h3 class="mx-auto my-4">Existing posts:</h3>
 <div class="posts-list flex-column align-center">
   {{#each posts as |post|}}
-    <div class="dish col-md-5 btn">
+  <div class="m-1 w-50 flex-column align-center">
+    <div class="btn">
     <a href="/post/{{post.id}}">
       <h2>{{post.title}}</h2>
     </a>
-    <h4>{{post.body}}</h4>
+    <h5>{{post.body}}</h5>
     <p>Post created by: {{post.user.username}}</p>
     <p>{{formatDate post.createdAt}}</p>
+    <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
   </div>
-        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
-      </div>
-    </div>
+  </div>
   {{/each}}
 </div>
-
+</div>
+</div>
+</div>
 <script src="./js/dashboard.js"></script>

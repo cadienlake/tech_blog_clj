@@ -11,10 +11,7 @@ const addComment = async (event) => {
       },
     });
     if (response.ok) {
-      alert("comment added!");
       document.location.reload();
-    } else {
-      alert("Failed to add comment");
     }
   }
 };
@@ -45,14 +42,16 @@ const updatePost = async (event) => {
 
 function showComment() {
   document.querySelector(".new-comment-form").classList.remove("hidden");
+  document.querySelector(".update-post-form").classList.add("hidden");
 }
 
 function showUpdate() {
   document.querySelector(".update-post-form").classList.remove("hidden");
+  document.querySelector(".new-comment-form").classList.add("hidden");
 }
 
 document.querySelector(".new-comment-form").addEventListener("click", addComment);
-document.querySelector(".reveal-btn").addEventListener("click", showComment);
+document.querySelector(".show-comment").addEventListener("click", showComment);
 
 document.querySelector(".update-post-form").addEventListener("click", updatePost);
-document.querySelector(".reveal-update-btn").addEventListener("click", showUpdate);
+document.querySelector(".show-update").addEventListener("click", showUpdate);
