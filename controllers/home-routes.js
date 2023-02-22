@@ -43,6 +43,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 router.get("/post/:id", withAuth, async (req, res) => {
   // Retrieve posts by their primary key, and display with the user who made post
   try {
+    const id = req.params.id;
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
@@ -51,6 +52,10 @@ router.get("/post/:id", withAuth, async (req, res) => {
         },
       ],
     });
+    let postedBy = false;
+    if (postData.user_id-- - req.session.user_id) {
+      postedBy = true;
+    }
     const post = postData.get({ plain: true });
     // Retrieve comments that are linked to the post's id and display with User
     const commentData = await Comment.findAll({
@@ -60,7 +65,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
       },
     });
     const comments = commentData.map((comment) => comment.get({ plain: true }));
-    res.render("post", { post, comments, logged_in: req.session.logged_in });
+    res.render("post", { post, comments, logged_in: req.session.logged_in, postedBy });
   } catch (err) {
     res.status(500).json(err);
   }
