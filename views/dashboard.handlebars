@@ -1,17 +1,41 @@
- <h3>Create a New Post:</h3>
+<div class="mx-auto flex-column align-center mt-4">
+  <h2>Welcome!</h2>
+  <h3>To create a new post, click here:</h3>
+  <div>
+    <button class="btn reveal"><h3>Go!</h3></button>
+  </div>
 
-    <form class="form new-post-form">
-      <div class="form-group">
-        <label for="post-title">Post Title:</label>
-        <input class="form-input" type="text" id="post-title" name="post-title" />
-      </div>
-      <div class="form-group">
-        <label for="post-body">Body:</label>
-        <input class="form-input" type="text" id="post-body" name="post-body" />
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
+  <form class="form new-post-form hidden">
+    <div class="form-group">
+      <label for="post-title">Post Title:</label>
+      <input class="form-input" type="text" id="post-title" name="post-title" />
+    </div>
+    <div class="form-group">
+      <label for="post-body">Body:</label>
+      <input class="form-input" type="text" id="post-body" name="post-body" />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+  </form>
+</div>
 
-    <script src="./js/dashboard.js"></script>
+<div class="flex-column align-center">
+<h3 class="mx-auto my-4">Existing posts:</h3>
+<div class="posts-list flex-column align-center">
+  {{#each posts as |post|}}
+    <div class="dish col-md-5 btn">
+    <a href="/post/{{post.id}}">
+      <h2>{{post.title}}</h2>
+    </a>
+    <h4>{{post.body}}</h4>
+    <p>Post created by: {{post.user.username}}</p>
+    <p>{{formatDate post.createdAt}}</p>
+  </div>
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+<script src="./js/dashboard.js"></script>

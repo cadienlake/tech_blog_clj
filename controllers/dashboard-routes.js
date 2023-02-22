@@ -22,16 +22,16 @@ router.get("/", async (req, res) => {
 
 // Make a blog post
 router.post("/", async (req, res) => {
-    try {
-      const postData = await Post.create({
-        title: req.body.title,
-        body: req.body.body,
-        user_id: req.session.user_id,
-      });
-      res.status(200).json(postData);
-    } catch (err) {
-      res.status(400).json(err);
-    }
-  });
+  try {
+    const postData = await Post.create({
+      title: req.body.title,
+      body: req.body.body,
+      user_id: req.session.user_id,
+    });
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
-
+module.exports = router;

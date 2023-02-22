@@ -162,3 +162,7 @@ nav {
   align-content: flex-start;
   align-items: center;
 }
+
+.hidden {
+  display: none;
+}

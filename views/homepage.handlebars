@@ -1,0 +1,10 @@
+{{#each posts as |post|}}
+  <div class="dish col-md-5">
+    <a href="/post/{{post.id}}">
+      <h2>{{post.title}}</h2>
+    </a>
+    <h4>{{post.body}}</h4>
+    <p>Post created by: {{post.user.username}}</p>
+    <p>{{formatDate post.createdAt}}</p>
+  </div>
+{{/each}}
