@@ -27,11 +27,11 @@ header {
   border-bottom-style: solid;
 }
 
-/* main {
+main {
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
-} */
+}
 
 aside {
   flex: 0;
