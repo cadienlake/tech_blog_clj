@@ -15,11 +15,11 @@
         <label for="post-body">Post Body:</label>
         <input class="form-input" type="text" id="post-body" name="post-body" />
       </div>
-      {{#if postedBy}}
-        <div class="form-group">
+      <div class="form-group">
+        {{#if postedBy}}
           <button type="submit" class="btn btn-primary" data-id="{{post.id}}">Update</button>
-        </div>
-      {{/if}}
+        {{/if}}
+      </div>
     </form>
     <form class="form new-comment-form mt-4 hidden">
       <div class="form-group">
